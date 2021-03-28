@@ -10,8 +10,8 @@
 </head>
 
 <body>
-    <a href="/flights/new">New Flight</a>
     <a href="/">Home</a>
+    <a href="/flights/new">New Flight</a>
     <h1>Flight List</h1>
     <table>
         <thead>
@@ -25,6 +25,10 @@
         <tbody>
             <% flights.forEach(function(f) { %>
                 <tr>
+                    <form action="/flights/<%= f._id %>?_method=DELETE" method="POST">
+                        <td >
+                            <button type="submit">X</button>
+                        </td>
                     <td>
                         <%= f.airline %>
                     </td>
@@ -37,6 +41,8 @@
                     <td>
                         <%= f.departs %>
                     </td>
+                    <td><a href="/flights/<%= f.id %>">DETAILS</a></td>
+                    </form>
                 </tr>
                 <% }); %>
         </tbody>

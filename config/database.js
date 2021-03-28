@@ -1,13 +1,18 @@
 const mongoose = require('mongoose');
 
-mongoose.connect('mongodb://localhost/flights', {
-    useNewUrlParser: true,
-    useUnifiedTopology: true,
-    useCreateIndex: true
-});
+mongoose.connect(
+    //db connection string
+    'mongodb://localhost/flights',
+    // mongoose connection options
+    {
+        useNewUrlParser: true,
+        useUnifiedTopology: true,
+        useCreateIndex: true
+    }
+);
 
 const db = mongoose.connection;
 
-db.on('connected', function () {
-    console.log(`Connected to MongoDB at ${db.host}:${db.port}`);
+db.on('connected', function() {
+    console.log(`Connected to MongoDB ${db.name} at ${db.host}:${db.port}`);
 });
